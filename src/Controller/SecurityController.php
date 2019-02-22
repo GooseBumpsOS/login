@@ -33,11 +33,11 @@ class SecurityController extends AbstractController
 
         $user = new User();
 
-        $user->setUsername('goose');
+        $user->setUsername('two');
 
         $user->setPassword($encoder->encodePassword($user, '0000'));
 
-        $user->setEmail('test@mail.com');
+        $user->setEmail('two2@mail.com');
 
         $this->getDoctrine()->getManager()->persist($user);
 
@@ -46,4 +46,13 @@ class SecurityController extends AbstractController
         return new JsonResponse('Ok');
 
     }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout(){
+
+
+    }
+
 }
