@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
@@ -16,63 +13,49 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="integer")
      */
     private $id;
-
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=191, unique=true)
      */
     private $username;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $password;
-
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=191, unique=true)
      */
     private $email;
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
     public function getUsername(): ?string
     {
         return $this->username;
     }
-
     public function setUsername(string $username): self
     {
         $this->username = $username;
-
         return $this;
     }
-
     public function getPassword(): ?string
     {
         return $this->password;
     }
-
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
-
     public function getEmail(): ?string
     {
         return $this->email;
     }
-
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
         return $this;
     }
-
     /**
      * Returns the roles granted to the user.
      *
@@ -93,7 +76,6 @@ class User implements UserInterface, \Serializable
             'ROLE_USER'
         ];
     }
-
     /**
      * Returns the salt that was originally used to encode the password.
      *
@@ -105,7 +87,6 @@ class User implements UserInterface, \Serializable
     {
         // TODO: Implement getSalt() method.
     }
-
     /**
      * Removes sensitive data from the user.
      *
@@ -116,7 +97,6 @@ class User implements UserInterface, \Serializable
     {
         // TODO: Implement eraseCredentials() method.
     }
-
     /**
      * String representation of object
      * @link https://php.net/manual/en/serializable.serialize.php
@@ -130,10 +110,8 @@ class User implements UserInterface, \Serializable
             $this->email,
             $this->password,
             $this->username,
-
         ]);
     }
-
     /**
      * Constructs the object
      * @link https://php.net/manual/en/serializable.unserialize.php
@@ -150,7 +128,6 @@ class User implements UserInterface, \Serializable
                             $this->email,
                             $this->password,
                             $this->username,
-
                     ) = unserialize($serialized, ['allowed_classes' => false]);
     }
 }
